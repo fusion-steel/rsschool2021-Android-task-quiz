@@ -30,8 +30,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/previous_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -80,9 +82,48 @@
                 android:id="@+id/radio_group"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="@id/margin_end_guideline"
                 app:layout_constraintStart_toStartOf="@id/margin_start_guideline"
-                app:layout_constraintTop_toBottomOf="@id/question"/>
+                app:layout_constraintTop_toBottomOf="@id/question">
+
+                <RadioButton
+                    android:id="@+id/option_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/option_size"
+                    tools:checked="true"
+                    tools:text="Option 1" />
+
+                <RadioButton
+                    android:id="@+id/option_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/option_size"
+                    tools:text="Option 2" />
+
+                <RadioButton
+                    android:id="@+id/option_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/option_size"
+                    tools:text="Option 3" />
+
+                <RadioButton
+                    android:id="@+id/option_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/option_size"
+                    tools:text="Option 4" />
+
+                <RadioButton
+                    android:id="@+id/option_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/option_size"
+                    tools:text="Option 5" />
+
+            </RadioGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
@@ -92,6 +133,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="Previous"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -101,6 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="Next"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
