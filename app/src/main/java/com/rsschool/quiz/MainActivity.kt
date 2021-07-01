@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity(), Navigator {
         if (savedInstanceState == null) {
             startQuiz()
         }
-
     }
 
     override fun startQuiz() {
@@ -47,7 +46,6 @@ class MainActivity : AppCompatActivity(), Navigator {
     }
 
     override fun launchPrevious() {
-        dropLastAnswer()
         if (current > 0) {
             current--
             changeTheme()
@@ -78,10 +76,5 @@ class MainActivity : AppCompatActivity(), Navigator {
                 .also { window.statusBarColor = getColor(R.color.deep_purple_100_dark) }
         }
         setTheme(currentTheme)
-    }
-
-    private fun dropLastAnswer() {
-//        println("remove ${ UserAnswers.answersID.last() }")
-        UserAnswers.answersID.removeAt(UserAnswers.answersID.lastIndex)
     }
 }
