@@ -38,8 +38,14 @@ class FragmentQuiz : Fragment() {
 
         setQuestion()
 
+        val currentAnswer = UserAnswers.answersID.getOrNull(currentID)
+        if (currentAnswer != null) {
+            checkRadioButton(currentAnswer)
+            binding.nextButton.isEnabled = true
+        }
+
         binding.nextButton.setOnClickListener {
-            addToAnswers(binding.radioGroup.indexOfChild(
+            addAnswer(binding.radioGroup.indexOfChild(
                 binding.radioGroup.findViewById(
                     binding.radioGroup.checkedRadioButtonId)))
             navigator().launchNext() }
@@ -78,10 +84,27 @@ class FragmentQuiz : Fragment() {
         binding.option3.text = currentQuestion.answers[2]
         binding.option4.text = currentQuestion.answers[3]
         binding.option5.text = currentQuestion.answers[4]
-        }
+    }
 
-    private fun addToAnswers(id: Int) = UserAnswers.answersID.add(id)
-//        .also { println("add $id") }
+    private fun addAnswer(id: Int) {
+        val answers = UserAnswers.answersID
+        if (answers.getOrNull(currentID) != null) {
+            answers[currentID] = id
+        } else {
+            answers.add(id)
+        }
+        println(answers.toString())
+    }
+
+    private fun checkRadioButton(id: Int) {
+        when (id) {
+            0 -> binding.option1.isChecked = true
+            1 -> binding.option2.isChecked = true
+            2 -> binding.option3.isChecked = true
+            3 -> binding.option4.isChecked = true
+            4 -> binding.option5.isChecked = true
+        }
+    }
 
     companion object {
         private const val QUESTION_ID = "questionID"
