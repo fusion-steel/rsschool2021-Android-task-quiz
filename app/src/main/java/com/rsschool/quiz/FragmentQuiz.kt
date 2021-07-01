@@ -96,15 +96,8 @@ class FragmentQuiz : Fragment() {
         println(answers.toString())
     }
 
-    private fun checkRadioButton(id: Int) {
-        when (id) {
-            0 -> binding.option1.isChecked = true
-            1 -> binding.option2.isChecked = true
-            2 -> binding.option3.isChecked = true
-            3 -> binding.option4.isChecked = true
-            4 -> binding.option5.isChecked = true
-        }
-    }
+    private fun checkRadioButton(id: Int) = binding.radioGroup.check(
+        binding.radioGroup.getChildAt(id).id)
 
     companion object {
         private const val QUESTION_ID = "questionID"
